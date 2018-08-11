@@ -3,6 +3,7 @@ Mount Olympus web scraping example project for Real Python
 
 https://realpython.com
 """
+import random
 
 import bottle
 
@@ -49,6 +50,11 @@ def poseidon():
 @bottle.route('/profiles/dionysus')
 def dionysus():
     return bottle.template('views/dionysus.html')
+
+
+@bottle.route('/dice')
+def dice():
+    return bottle.template('views/dice.html', random=random.randint(1, 6))
 
 
 app = bottle.default_app()
