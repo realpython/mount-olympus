@@ -3,6 +3,7 @@ Mount Olympus web scraping example project for Real Python
 
 https://realpython.com
 """
+from datetime import datetime
 import random
 
 import bottle
@@ -54,7 +55,9 @@ def dionysus():
 
 @bottle.route('/dice')
 def dice():
-    return bottle.template('views/dice.html', random=random.randint(1, 6))
+    result = random.randint(1, 6)
+    time = datetime.now().strftime("%B %d, %Y %I:%M:%S%p")
+    return bottle.template('views/dice.html', random=result, time=time)
 
 
 app = bottle.default_app()
